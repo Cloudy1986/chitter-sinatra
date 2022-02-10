@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'Add peeps' do
   scenario 'user can add a peep and it displays in the list of peeps' do
     visit '/peeps'
