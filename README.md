@@ -4,7 +4,7 @@ A twitter clone that allows users to post messages to a public stream.
 
 ## User stories
 
-View peeps:
+View peeps (https://trello.com/c/Vtxx99y1):
 ```
 As a... user
 I want... to see peeps
@@ -66,5 +66,22 @@ I want... to comment on a peep
 So that... I can interact with others users via their peeps
 ```
 
+## Trello board
+https://trello.com/b/RnC9pnmw/chitter-sinatra
+
 ## Heroku link
 https://secret-basin-74632.herokuapp.com/
+
+## Set up databases
+
+Set up development database:
+1. Open postrges by entering `psql` in the terminal
+2. Run the command `CREATE DATABASE chitter_sinatra;` to create the database
+3. Connect to the database using the command `\c chitter_sinatra;`
+4. Run the query saved in `01_create_peeps_table.sql`
+
+Set up test database:
+1. Open postrges by entering `psql` in the terminal
+2. Run the command `CREATE DATABASE chitter_sinatra_test;` to create the database
+3. Connect to the database using the command `\c chitter_sinatra_test;`
+4. Run the query saved in `01_create_peeps_table.sql`
