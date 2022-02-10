@@ -5,10 +5,9 @@ require 'peep'
 describe Peep do
   describe '.all' do
     it 'returns a list of peeps' do
-      connection = PG.connect(dbname: 'chitter_sinatra_test')
-      connection.exec_params('INSERT INTO peeps (message) VALUES ($1);', ['Test peep 1'])
-      connection.exec_params('INSERT INTO peeps (message) VALUES ($1);', ['Test peep 2'])
-      connection.exec_params('INSERT INTO peeps (message) VALUES ($1);', ['Test peep 3'])
+      Peep.create(message: 'Test peep 1')
+      Peep.create(message: 'Test peep 2')
+      Peep.create(message: 'Test peep 3')
 
       peeps = Peep.all
 
