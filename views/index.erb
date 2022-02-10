@@ -3,3 +3,9 @@
 <% @peeps.each do |peep|%>
   <ul><%= peep.message %></ul>
 <% end %>
+
+<br>
+
+<form action="/peeps/new" method="get">
+  <input type="submit" value="Add a new peep">
+</form>
