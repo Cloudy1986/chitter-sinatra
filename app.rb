@@ -11,11 +11,7 @@ class ChitterApplication < Sinatra::Base
   end
 
   get '/peeps' do
-    @peeps = [
-      "I'm learning to code and practising building a web app",
-      "Ruby is the best!",
-      "I'm loving using Sinatra to build a web app"
-    ]
+    @peeps = Peep.all
     erb :index
   end
 
