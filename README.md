@@ -1,4 +1,4 @@
-## Chitter
+# Chitter
 
 A twitter clone that allows users to post messages to a public stream.
 
