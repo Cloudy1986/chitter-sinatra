@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 require 'sinatra/base'
 require 'sinatra/reloader'
 require './lib/peep'
 
+# class for controller
 class ChitterApplication < Sinatra::Base
   configure :development do
     register Sinatra::Reloader
