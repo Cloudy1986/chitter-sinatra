@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
+require './lib/peep'
 
 class ChitterApplication < Sinatra::Base
   configure :development do
@@ -12,7 +13,6 @@ class ChitterApplication < Sinatra::Base
 
   get '/peeps' do
     @peeps = Peep.all
-    p @peeps
     erb :index
   end
 
