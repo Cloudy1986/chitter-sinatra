@@ -25,7 +25,7 @@ I want... to see all peeps in reverse chronological order
 So that... I can see what others are saying most recently
 ```
 
-**Display when a peep was created:**
+**[Display when a peep was created](https://trello.com/c/V1jMAkdk):**
 ```
 As a... user
 I want... to see the time at which it was made

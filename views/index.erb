@@ -1,7 +1,7 @@
 <h1>Latest peeps</h1>
 
 <% @peeps.each do |peep|%>
-  <ul><%= peep.message %></ul>
+  <ul><%= peep.message %> - <%= peep.created_at %></ul>
 <% end %>
 
 <br>
