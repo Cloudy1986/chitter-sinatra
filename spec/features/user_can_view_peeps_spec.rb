@@ -11,4 +11,11 @@ feature 'View peeps' do
     expect(page).to have_content 'Feature test peep 2'
     expect(page).to have_content 'Feature test peep 3'
   end
+
+  scenario 'user can view when peep was created' do
+    Peep.create(message: 'Testing viewing created at')
+    peep = Peep.all[0]
+    visit '/peeps'
+    expect(page).to have_content "#{peep.created_at}"
+  end
 end

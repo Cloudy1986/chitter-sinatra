@@ -17,6 +17,12 @@ describe Peep do
       expect(peeps[1].message).to eq 'Test peep 2'
       expect(peeps[2].message).to eq 'Test peep 3'
     end
+
+    it 'returns created_at as an attribute of a peep' do
+      peep = Peep.create(message: 'Test created_at for a peep')
+      peeps = Peep.all
+      expect(peep.created_at).to eq peeps[0].created_at
+    end
   end
 
   describe '.create' do
