@@ -16,6 +16,9 @@ class ChitterApplication < Sinatra::Base
 
   get '/peeps' do
     @peeps = Peep.all.reverse
+    if @peeps != []
+      p @peeps[0].created_at
+    end
     erb :index
   end
 
