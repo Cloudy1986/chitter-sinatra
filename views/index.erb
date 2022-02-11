@@ -1,11 +1,19 @@
-<h1>Latest peeps</h1>
-
-<% @peeps.each do |peep|%>
-  <ul><%= peep.message %> - <%= peep.created_at %></ul>
-<% end %>
-
-<br>
-
-<form action="/peeps/new" method="get">
-  <input type="submit" value="Add a new peep">
-</form>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chitter</title>
+  </head>
+  <body>
+    <h1>Latest peeps</h1>
+    <% @peeps.each do |peep|%>
+    <p>
+      <%= peep.message %> - <%= peep.created_at %>
+    </p>
+    <% end %>
+    <p>
+      <form action="/peeps/new" method="get">
+        <input type="submit" value="Add a new peep">
+      </form>
+    </p>
+  </body>
+</html>
