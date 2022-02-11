@@ -16,6 +16,6 @@ feature 'View peeps' do
     Peep.create(message: 'Testing viewing created at')
     peep = Peep.all[0]
     visit '/peeps'
-    expect(page).to have_content "#{peep.created_at}"
+    expect(page).to have_content peep.created_at.to_s
   end
 end
