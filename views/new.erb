@@ -4,12 +4,21 @@
     <title>Chitter</title>
   </head>
   <body>
-    <h1>New peep</h1>
-    <p>
-      <form action="/peeps/new" method="post">
-        <input type="text" name="message">
-        <input type="submit" value="Add peep">
-      </form>
-    </p>
+    <br>
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <h1 class="text-center">Add a new peep</h1>
+      </div>
+    </div>
+    <br>
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <form class="text-center" action="/peeps/new" method="post">
+          <input class="form-control" type="text" name="message">
+          <br>
+          <input class="btn btn-dark" type="submit" value="Add peep">
+        </form>
+      </div>
+    </div>
   </body>
 </html>

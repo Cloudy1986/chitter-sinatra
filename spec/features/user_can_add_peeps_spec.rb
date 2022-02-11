@@ -3,7 +3,7 @@
 feature 'Add peeps' do
   scenario 'user can add a peep and it displays in the list of peeps' do
     visit '/peeps'
-    click_button 'Add a new peep'
+    click_link 'Add a new peep'
     fill_in 'message', with: 'This is a new peep'
     click_button 'Add peep'
     expect(current_path).to eq '/peeps'

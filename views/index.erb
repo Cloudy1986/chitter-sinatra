@@ -4,16 +4,26 @@
     <title>Chitter</title>
   </head>
   <body>
-    <h1>Latest peeps</h1>
-    <% @peeps.each do |peep|%>
-    <p>
-      <%= peep.message %> - <%= peep.created_at %>
-    </p>
-    <% end %>
-    <p>
-      <form action="/peeps/new" method="get">
-        <input type="submit" value="Add a new peep">
-      </form>
-    </p>
+    <br>
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <h1 class="text-center">Latest peeps</h1>
+      </div>
+    </div>
+    <br>
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <% @peeps.each do |peep|%>
+          <div class="card" style="width: 40rem;">
+            <div class="card-body">
+              <h5 class="card-title"><%= peep.message %></h5>
+              <br>
+              <h6 class="card-subtitle mb-2 text-muted"><%= peep.created_at %></h6>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <br>
   </body>
 </html>
