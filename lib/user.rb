@@ -40,6 +40,7 @@ class User
       connection = PG.connect(dbname: 'chitter_sinatra')
     end
     result = connection.exec_params("SELECT * FROM users WHERE email = $1;", [email])
+    return if result.any? != true
     User.new(id: result[0]['id'], username: result[0]['username'], email: result[0]['email'])
   end
 
