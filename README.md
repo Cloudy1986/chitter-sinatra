@@ -80,6 +80,7 @@ Set up development database:
 3. Connect to the database using the command `\c chitter_sinatra;`
 4. Run the query saved in `01_create_peeps_table.sql`
 5. Run the query saved in `02_create_users_table.sql`
+6. Run the query saved in `03_add_column_peeps_table.sql`
 
 Set up test database:
 1. Open postrges by entering `psql` in the terminal
@@ -87,3 +88,4 @@ Set up test database:
 3. Connect to the database using the command `\c chitter_sinatra_test;`
 4. Run the query saved in `01_create_peeps_table.sql`
 5. Run the query saved in `02_create_users_table.sql`
+6. Run the query saved in `03_add_column_peeps_table.sql`
