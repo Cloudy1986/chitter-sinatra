@@ -2,9 +2,10 @@
 
 feature 'View peeps' do
   scenario 'user can view a list of peeps' do
-    Peep.create(message: 'Feature test peep 1')
-    Peep.create(message: 'Feature test peep 2')
-    Peep.create(message: 'Feature test peep 3')
+    user = User.create(username: 'Bob', email: 'bob@example.com', password: 'password1234')
+    Peep.create(message: 'Feature test peep 1', user_id: user.id)
+    Peep.create(message: 'Feature test peep 2', user_id: user.id)
+    Peep.create(message: 'Feature test peep 3', user_id: user.id)
     visit '/peeps'
     expect(page).to have_content 'Latest peeps'
     expect(page).to have_content 'Feature test peep 1'
@@ -13,7 +14,8 @@ feature 'View peeps' do
   end
 
   scenario 'user can view when peep was created' do
-    Peep.create(message: 'Testing viewing created at')
+    user = User.create(username: 'Bob', email: 'bob@example.com', password: 'password1234')
+    Peep.create(message: 'Testing viewing created at', user_id: user.id)
     peep = Peep.all[0]
     visit '/peeps'
     expect(page).to have_content Time.parse("#{peep.created_at}").strftime("%H:%M %d/%m/%Y")
