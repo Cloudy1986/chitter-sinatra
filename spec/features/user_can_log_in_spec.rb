@@ -17,6 +17,7 @@ feature 'Log in' do
     click_button 'Log in'
     expect(current_path).to eq '/log-in'
     expect(page).to_not have_content 'You are logged in as test'
+    expect(page).to have_content 'Please check your email or password'
   end
 
   scenario 'user cannot log in with incorrect password' do
@@ -27,6 +28,7 @@ feature 'Log in' do
     click_button 'Log in'
     expect(current_path).to eq '/log-in'
     expect(page).to_not have_content 'You are logged in as test'
+    expect(page).to have_content 'Please check your email or password'
   end
 
 end

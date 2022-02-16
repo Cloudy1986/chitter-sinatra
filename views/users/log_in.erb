@@ -13,6 +13,12 @@
     <br>
     <div class="container-fluid">
       <div class="row justify-content-center">
+        <h6><%= flash[:notice] %> </h6>
+      </div>
+    </div>
+    <br>
+    <div class="container-fluid">
+      <div class="row justify-content-center">
         <form class="text-center" action="/log-in/new" method="post">
           <label for="email">Email:</label>
           <input class="form-control" type="text" name="email">

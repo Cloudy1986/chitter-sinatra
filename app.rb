@@ -2,6 +2,7 @@
 
 require 'sinatra/base'
 require 'sinatra/reloader'
+require 'sinatra/flash'
 require './lib/peep'
 require './lib/user'
 
@@ -12,6 +13,7 @@ class ChitterApplication < Sinatra::Base
   end
 
   enable :sessions
+  register Sinatra::Flash
 
   get '/' do
     erb :homepage
@@ -53,6 +55,7 @@ class ChitterApplication < Sinatra::Base
       session[:user_id] = user.id
       redirect '/peeps'
     else
+      flash[:notice] = 'Please check your email or password and try again'
       redirect 'log-in'
     end
   end
