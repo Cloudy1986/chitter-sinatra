@@ -27,3 +27,7 @@
     <br>
   </body>
 </html>
+
+<% if @user %>
+<h3>You are logged in as <%= @user.username %></h3>
+<% end %>

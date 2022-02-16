@@ -22,4 +22,15 @@ class User
     User.new(id: result[0]['id'], username: result[0]['username'], email: result[0]['email'])
   end
 
+  def self.find(id:)
+    return nil unless id
+    if ENV['ENVIRONMENT'] == 'test'
+      connection = PG.connect(dbname: 'chitter_sinatra_test')
+    else
+      connection = PG.connect(dbname: 'chitter_sinatra')
+    end
+    result = connection.exec_params("SELECT * FROM users WHERE id = $1;", [id])
+    User.new(id: result[0]['id'], username: result[0]['username'], email: result[0]['email'])
+  end
+
 end

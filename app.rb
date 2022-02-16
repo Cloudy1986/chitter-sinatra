@@ -11,11 +11,14 @@ class ChitterApplication < Sinatra::Base
     register Sinatra::Reloader
   end
 
+  enable :sessions
+
   get '/' do
     erb :homepage
   end
 
   get '/peeps' do
+    @user = User.find(id: session[:user_id])
     @peeps = Peep.all.reverse
     erb :'peeps/index'
   end
@@ -34,7 +37,8 @@ class ChitterApplication < Sinatra::Base
   end
 
   post '/sign-up/new' do
-    User.create(username: params['username'], email: params['email'], password: params['password'])
+    user = User.create(username: params['username'], email: params['email'], password: params['password'])
+    session[:user_id] = user.id
     redirect '/peeps'
   end
 
