@@ -34,4 +34,8 @@ class Peep
     result = connection.exec_params('INSERT INTO peeps (message, user_id) VALUES ($1, $2) RETURNING id, message, created_at, user_id;', [message, user_id])
     Peep.new(id: result[0]['id'], message: result[0]['message'], created_at: result[0]['created_at'], user_id: result[0]['user_id'])
   end
+
+  def owner(user_class = User)
+    user_class.find(id: user_id)
+  end
 end

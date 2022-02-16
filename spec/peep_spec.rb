@@ -3,6 +3,9 @@
 require 'peep'
 
 describe Peep do
+
+  let(:user_class) { double(:user_class) }
+
   describe '.all' do
     it 'returns a list of peeps with message and created_at attributes' do
       user = User.create(username: 'Bob', email: 'bob@example.com', password: 'password1234')
@@ -31,6 +34,16 @@ describe Peep do
       expect(peeps[0].message).to eq 'This is a new peep in unit test'
       expect(peeps[0].id).to eq peep.id
       expect(peeps[0].user_id).to eq user.id
+    end
+  end
+
+  describe '#owner' do
+    it 'calls .find on the User class' do
+      user = User.create(username: 'Mary', email: 'mary@example.com', password: 'fdbguib')
+      peep = Peep.create(message: 'This is a peep', user_id: user.id)
+
+      expect(user_class).to receive(:find).with(id: peep.user_id)
+      peep.owner(user_class)
     end
   end
 end
