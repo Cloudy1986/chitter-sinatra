@@ -32,7 +32,7 @@ I want... to see the time at which it was made
 So that... I can better appreciate the context of a peep
 ```
 
-**Sign up and log in:**
+**[Sign up and log in](https://trello.com/c/Y9vDL34A):**
 ```
 As a... user
 I want... to sign up for Chitter
@@ -69,23 +69,21 @@ So that... I can interact with others users via their peeps
 ## Trello board
 https://trello.com/b/RnC9pnmw/chitter-sinatra
 
-## Heroku link
-https://secret-basin-74632.herokuapp.com/
+## Setting up and running the app
 
-## Set up databases
-
-Set up development database:
-1. Open postrges by entering `psql` in the terminal
-2. Run the command `CREATE DATABASE chitter_sinatra;` to create the database
-3. Connect to the database using the command `\c chitter_sinatra;`
-4. Run the query saved in `01_create_peeps_table.sql`
-5. Run the query saved in `02_create_users_table.sql`
-6. Run the query saved in `03_add_column_peeps_table.sql`
-
-Set up test database:
-1. Open postrges by entering `psql` in the terminal
-2. Run the command `CREATE DATABASE chitter_sinatra_test;` to create the database
-3. Connect to the database using the command `\c chitter_sinatra_test;`
-4. Run the query saved in `01_create_peeps_table.sql`
-5. Run the query saved in `02_create_users_table.sql`
-6. Run the query saved in `03_add_column_peeps_table.sql`
+1. Clone this repo
+2. Run `bundle install` via your terminal
+3. Set up your development database:
+ - Open postrges by entering `psql` in the terminal
+ - Run the command `CREATE DATABASE chitter_sinatra;` to create the database
+ - Connect to the database using the command `\c chitter_sinatra;`
+ - Run the query saved in `01_create_peeps_table.sql`
+ - Run the query saved in `02_create_users_table.sql`
+ - Run the query saved in `03_add_column_peeps_table.sql`
+4. Set up your test database:
+ - Open postrges by entering `psql` in the terminal
+ - Run the command `CREATE DATABASE chitter_sinatra_test;` to create the database
+ - Connect to the database using the command `\c chitter_sinatra_test;`
+ - Run the query saved in `01_create_peeps_table.sql`
+ - Run the query saved in `02_create_users_table.sql`
+ - Run the query saved in `03_add_column_peeps_table.sql`
