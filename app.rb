@@ -24,6 +24,7 @@ class ChitterApplication < Sinatra::Base
   end
 
   get '/peeps/new' do
+    @user = User.find(id: session[:user_id])
     erb :'peeps/new'
   end
 
