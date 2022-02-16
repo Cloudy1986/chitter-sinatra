@@ -48,7 +48,7 @@ class ChitterApplication < Sinatra::Base
   end
 
   post '/log-in/new' do
-    user = User.authenticate(username: params['username'], email: params['email'], password: params['password'])
+    user = User.authenticate(email: params['email'], password: params['password'])
     if user
       session[:user_id] = user.id
       redirect '/peeps'

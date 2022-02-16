@@ -33,7 +33,7 @@ class User
     User.new(id: result[0]['id'], username: result[0]['username'], email: result[0]['email'])
   end
 
-  def self.authenticate(username:, email:, password:)
+  def self.authenticate(email:, password:)
     if ENV['ENVIRONMENT'] == 'test'
       connection = PG.connect(dbname: 'chitter_sinatra_test')
     else
@@ -41,6 +41,7 @@ class User
     end
     result = connection.exec_params("SELECT * FROM users WHERE email = $1;", [email])
     return if result.any? != true
+    return if BCrypt::Password.new(result[0]['password']) != password
     User.new(id: result[0]['id'], username: result[0]['username'], email: result[0]['email'])
   end
 
