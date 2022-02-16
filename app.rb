@@ -43,5 +43,14 @@ class ChitterApplication < Sinatra::Base
     redirect '/peeps'
   end
 
+  get '/log-in' do
+    erb :'users/log_in'
+  end
+
+  post '/log-in/new' do
+    p params
+    redirect '/peeps'
+  end
+
   run! if app_file == $0
 end
