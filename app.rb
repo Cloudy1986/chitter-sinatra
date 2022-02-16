@@ -22,7 +22,6 @@ class ChitterApplication < Sinatra::Base
   get '/peeps' do
     @user = User.find(id: session[:user_id])
     @peeps = Peep.all
-    p @peeps
     erb :'peeps/index'
   end
 
