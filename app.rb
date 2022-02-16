@@ -3,6 +3,7 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
 require './lib/peep'
+require './lib/user'
 
 # class for controller
 class ChitterApplication < Sinatra::Base
@@ -33,8 +34,7 @@ class ChitterApplication < Sinatra::Base
   end
 
   post '/sign-up/new' do
-    p params
-    # User.create(username: params['username'], email: params['email'], password: params['password'])
+    User.create(username: params['username'], email: params['email'], password: params['password'])
     redirect '/peeps'
   end
 
