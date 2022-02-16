@@ -16,11 +16,11 @@ class ChitterApplication < Sinatra::Base
 
   get '/peeps' do
     @peeps = Peep.all.reverse
-    erb :index
+    erb :'peeps/index'
   end
 
   get '/peeps/new' do
-    erb :new
+    erb :'peeps/new'
   end
 
   post '/peeps/new' do
