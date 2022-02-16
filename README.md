@@ -87,3 +87,5 @@ https://trello.com/b/RnC9pnmw/chitter-sinatra
     * Run the query saved in `01_create_peeps_table.sql`
     * Run the query saved in `02_create_users_table.sql`
     * Run the query saved in `03_add_column_peeps_table.sql`
+5. Start the server using `rackup` in the terminal
+6. Visit your local host and start playing with the app!
