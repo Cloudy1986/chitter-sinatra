@@ -18,4 +18,15 @@ feature 'View peeps' do
     visit '/peeps'
     expect(page).to have_content Time.parse("#{peep.created_at}").strftime("%H:%M %d/%m/%Y")
   end
+
+  scenario 'user can see who created each peep' do
+    user = User.create(username: 'Mary', email: 'mary@example.com', password: '1234password')
+    peep = Peep.create(message: 'This is a peep by Mary', user_id: user.id)
+    user2 = User.create(username: 'Dave', email: 'dave@example.com', password: 'password20')
+    peep = Peep.create(message: 'This is a peep by Dave', user_id: user2.id)
+    visit '/peeps'
+    expect(current_path).to eq '/peeps'
+    expect(page).to have_content "Created by #{user.username}"
+    expect(page).to have_content "Created by #{user2.username}"
+  end
 end
