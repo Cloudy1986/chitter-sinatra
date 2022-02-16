@@ -3,7 +3,6 @@
 require 'peep'
 
 describe Peep do
-
   let(:user_class) { double(:user_class) }
 
   describe '.all' do

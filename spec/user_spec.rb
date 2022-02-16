@@ -1,13 +1,14 @@
+# frozen_string_literal: true
+
 require 'user'
 
 describe User do
-  
   describe '.create' do
     it 'adds a user to the database when user signs up' do
       user = User.create(username: 'Bob', email: 'bob@example.com', password: 'password1234')
 
       test_connection = PG.connect(dbname: 'chitter_sinatra_test')
-      test_result = test_connection.exec_params("SELECT * FROM users WHERE id = $1;", [user.id])
+      test_result = test_connection.exec_params('SELECT * FROM users WHERE id = $1;', [user.id])
 
       expect(user).to be_a User
       expect(user.id).to eq test_result[0]['id']
@@ -15,7 +16,7 @@ describe User do
       expect(user.email).to eq test_result[0]['email']
     end
 
-    it "encrypts the password" do
+    it 'encrypts the password' do
       expect(BCrypt::Password).to receive(:create).with('password1234')
       User.create(username: 'Bob', email: 'bob@example.com', password: 'password1234')
     end
@@ -44,16 +45,15 @@ describe User do
     end
 
     it 'returns nil if given incorrect email' do
-      user = User.create(username: 'Millie', email: 'millie@example.com', password: 'password10')
+      User.create(username: 'Millie', email: 'millie@example.com', password: 'password10')
       returned_user = User.authenticate(email: 'incorrect@example.com', password: 'password10')
       expect(returned_user).to eq nil
     end
 
     it 'returns nil if given incorrect password' do
-      user = User.create(username: 'Millie', email: 'millie@example.com', password: 'password10')
+      User.create(username: 'Millie', email: 'millie@example.com', password: 'password10')
       returned_user = User.authenticate(email: 'millie@example.com', password: 'incorrectpassword')
       expect(returned_user).to eq nil
     end
   end
-
 end

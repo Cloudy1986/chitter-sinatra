@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'Log in' do
   scenario 'user successfully logs in with correct email' do
     User.create(username: 'test', email: 'test@example.com', password: 'password123')
@@ -30,5 +32,4 @@ feature 'Log in' do
     expect(page).to_not have_content 'You are logged in as test'
     expect(page).to have_content 'Please check your email or password'
   end
-
 end
