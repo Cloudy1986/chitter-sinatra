@@ -29,7 +29,13 @@ class ChitterApplication < Sinatra::Base
   end
 
   get '/sign-up' do
-    "hello world"
+    erb :'users/sign_up'
+  end
+
+  post '/sign-up/new' do
+    p params
+    # User.create(username: params['username'], email: params['email'], password: params['password'])
+    redirect '/peeps'
   end
 
   run! if app_file == $0
