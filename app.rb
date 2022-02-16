@@ -28,5 +28,9 @@ class ChitterApplication < Sinatra::Base
     redirect '/peeps'
   end
 
+  get '/sign-up' do
+    "hello world"
+  end
+
   run! if app_file == $0
 end
