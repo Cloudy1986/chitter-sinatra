@@ -9,13 +9,13 @@ require './redirect_helper'
 
 # class for controller
 class ChitterApplication < Sinatra::Base
-  configure :development do
+  configure :development, :test do
     register Sinatra::Reloader
+    register Sinatra::Flash
   end
 
   enable :sessions, :method_override
-  register Sinatra::Flash
-
+  
   get '/' do
     @user = User.find(id: session[:user_id])
     erb :homepage
