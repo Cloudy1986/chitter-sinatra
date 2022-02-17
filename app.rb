@@ -76,6 +76,7 @@ class ChitterApplication < Sinatra::Base
   end
 
   get '/peeps/:id/edit' do
+    redirect_logged_out_user
     @user = User.find(id: session[:user_id])
     @peep = Peep.find(id: params['id'])
     erb :'peeps/edit'
