@@ -48,17 +48,12 @@ describe Peep do
 
   describe '.delete' do
     it 'deletes a peep from the database by an id' do
-      # Arrange
       user = User.create(username: 'Mary', email: 'mary@example.com', password: 'fdbguib')
       peep = Peep.create(message: 'This is a test peep', user_id: user.id)
 
-      # Act
       deleted_peep = Peep.delete(id: peep.id)
-      p deleted_peep
       peeps = Peep.all
-      p peeps
 
-      # Assert
       expect(peeps).to be_empty
       expect(deleted_peep.id).to eq peep.id
       expect(deleted_peep.user_id).to eq user.id

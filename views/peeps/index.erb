@@ -20,10 +20,12 @@
               <br>
               <h6 class="card-subtitle mb-2 text-muted">Created by <%= peep.owner.username %> at <%= Time.parse("#{peep.created_at}").strftime("%H:%M %d/%m/%Y") %></h6>
               <br>
+              <% if @user && @user.id == peep.user_id %>
               <form action="/peeps/<%= peep.id %>" method="post">
                 <input type="hidden" name="_method" value="DELETE">
                 <input type="submit" value="Delete peep">
               </form>
+              <% end %>
             </div>
           </div>
         <% end %>
