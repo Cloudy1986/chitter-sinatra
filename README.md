@@ -60,7 +60,7 @@ I want... to delete my own peep
 So that... I can remove a peep I'm no longer happy with
 ```
 
-**Update peeps:**
+**[Update peeps](https://trello.com/c/0qveNaX2):** ✅
 ```
 As a... user
 I want... to update my own peep
