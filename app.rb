@@ -5,7 +5,7 @@ require 'sinatra/reloader'
 require 'sinatra/flash'
 require './lib/peep'
 require './lib/user'
-require './redirect_helper.rb'
+require './redirect_helper'
 
 # class for controller
 class ChitterApplication < Sinatra::Base

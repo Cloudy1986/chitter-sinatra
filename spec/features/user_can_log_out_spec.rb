@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'Log out' do
   scenario 'user can log out' do
     User.create(username: 'test', email: 'test@example.com', password: 'password123')
