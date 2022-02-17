@@ -22,11 +22,18 @@
               <h6 class="card-subtitle mb-2 text-muted">Created by <%= peep.owner.username %> at <%= Time.parse("#{peep.created_at}").strftime("%H:%M %d/%m/%Y") %></h6>
               <br>
               <% if @user && @user.id == peep.user_id %>
+              <form action="/peeps/<%= peep.id %>/edit" method="get">
+                <input class="btn btn-dark" type="submit" value="Edit peep">
+              </form>
+              <% end %>
+              <br>
+              <% if @user && @user.id == peep.user_id %>
               <form action="/peeps/<%= peep.id %>" method="post">
                 <input type="hidden" name="_method" value="DELETE">
                 <input class="btn btn-dark" type="submit" value="Delete peep">
               </form>
               <% end %>
+              <br>
             </div>
           </div>
         <% end %>

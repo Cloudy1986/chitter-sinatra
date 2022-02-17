@@ -75,5 +75,9 @@ class ChitterApplication < Sinatra::Base
     redirect '/peeps'
   end
 
+  get '/peeps/:id/edit' do
+    erb :'peeps/edit'
+  end
+
   run! if app_file == $0
 end
