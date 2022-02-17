@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'Edit peep' do
   scenario 'user can edit their peep' do
     user = User.create(username: 'Mary', email: 'mary@example.com', password: '1234password')
