@@ -60,5 +60,10 @@ class ChitterApplication < Sinatra::Base
     end
   end
 
+  post '/log-in/destroy' do
+    session.clear
+    redirect 'log-in'
+  end
+
   run! if app_file == $0
 end
