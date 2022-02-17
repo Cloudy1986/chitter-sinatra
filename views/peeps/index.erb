@@ -23,7 +23,7 @@
               <% if @user && @user.id == peep.user_id %>
               <form action="/peeps/<%= peep.id %>" method="post">
                 <input type="hidden" name="_method" value="DELETE">
-                <input type="submit" value="Delete peep">
+                <input class="btn btn-dark" type="submit" value="Delete peep">
               </form>
               <% end %>
             </div>
