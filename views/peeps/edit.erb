@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chitter</title>
+  </head>
+  <body>
+    <br>
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <h1 class="text-center">Edit peep</h1>
+      </div>
+    </div>
+    <br>
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <form class="text-center" action="/peeps/<%= @peep.id %>" method="post">
+          <input type="hidden" name="_method" value="patch">
+          <input class="form-control" type="text" name="message" placeholder="<%= @peep.message %>">
+          <br>
+          <input class="btn btn-dark" type="submit" value="Update peep">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
+
