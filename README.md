@@ -45,7 +45,7 @@ I want... to log in to Chitter
 So that...  I can post messages on Chitter as me
 ```
 
-**[Log out](https://trello.com/c/iSStYvGB):**
+**[Log out](https://trello.com/c/iSStYvGB):** ✅
 
 ```
 As a... user

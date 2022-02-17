@@ -5,6 +5,7 @@ require 'sinatra/reloader'
 require 'sinatra/flash'
 require './lib/peep'
 require './lib/user'
+require './redirect_helper'
 
 # class for controller
 class ChitterApplication < Sinatra::Base
@@ -16,17 +17,18 @@ class ChitterApplication < Sinatra::Base
   register Sinatra::Flash
 
   get '/' do
+    @user = User.find(id: session[:user_id])
     erb :homepage
   end
 
   get '/peeps' do
     @user = User.find(id: session[:user_id])
     @peeps = Peep.all
-    p @peeps
     erb :'peeps/index'
   end
 
   get '/peeps/new' do
+    redirect_logged_out_user
     @user = User.find(id: session[:user_id])
     erb :'peeps/new'
   end
@@ -37,6 +39,7 @@ class ChitterApplication < Sinatra::Base
   end
 
   get '/sign-up' do
+    redirect_logged_in_user
     erb :'users/sign_up'
   end
 
@@ -47,6 +50,7 @@ class ChitterApplication < Sinatra::Base
   end
 
   get '/log-in' do
+    redirect_logged_in_user
     erb :'users/log_in'
   end
 
@@ -59,6 +63,11 @@ class ChitterApplication < Sinatra::Base
       flash[:notice] = 'Please check your email or password and try again'
       redirect 'log-in'
     end
+  end
+
+  post '/log-in/destroy' do
+    session.clear
+    redirect 'log-in'
   end
 
   run! if app_file == $0
