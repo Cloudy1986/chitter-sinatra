@@ -23,7 +23,7 @@ class ChitterApplication < Sinatra::Base
 
   get '/peeps' do
     @user = User.find(id: session[:user_id])
-    @peeps = Peep.all
+    @peeps = Peep.all.sort_by(&:created_at).reverse
     erb :'peeps/index'
   end
 
@@ -71,7 +71,6 @@ class ChitterApplication < Sinatra::Base
   end
 
   delete '/peeps/:id' do
-    p params
     Peep.delete(id: params['id'])
     redirect '/peeps'
   end
