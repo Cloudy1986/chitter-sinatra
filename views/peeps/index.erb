@@ -16,6 +16,7 @@
         <% @peeps.each do |peep|%>
           <div class="card" style="width: 40rem;">
             <div class="card-body text-center">
+              <br>
               <h5 class="card-title"><%= peep.message %></h5>
               <br>
               <h6 class="card-subtitle mb-2 text-muted">Created by <%= peep.owner.username %> at <%= Time.parse("#{peep.created_at}").strftime("%H:%M %d/%m/%Y") %></h6>
