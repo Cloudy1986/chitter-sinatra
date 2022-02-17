@@ -59,4 +59,18 @@ describe Peep do
       expect(deleted_peep.user_id).to eq user.id
     end
   end
+
+  describe '.find' do
+    it 'returns a peep by id' do
+      user = User.create(username: 'Mary', email: 'mary@example.com', password: 'fdbguib')
+      peep = Peep.create(message: 'This is a test peep', user_id: user.id)
+      
+      returned_peep = Peep.find(id: peep.id)
+      
+      expect(returned_peep).to be_a Peep
+      expect(returned_peep.id).to eq peep.id
+      expect(returned_peep.message).to eq peep.message
+      expect(returned_peep.user_id).to eq peep.user_id
+    end
+  end
 end
