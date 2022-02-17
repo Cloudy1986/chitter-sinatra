@@ -5,6 +5,7 @@ require 'sinatra/reloader'
 require 'sinatra/flash'
 require './lib/peep'
 require './lib/user'
+require './redirect_helper.rb'
 
 # class for controller
 class ChitterApplication < Sinatra::Base
@@ -14,18 +15,6 @@ class ChitterApplication < Sinatra::Base
 
   enable :sessions
   register Sinatra::Flash
-
-  def redirect_logged_out_user
-    if !session[:user_id]
-      redirect '/'
-    end
-  end
-
-  def redirect_logged_in_user
-    if session[:user_id]
-      redirect '/peeps'
-    end
-  end
 
   get '/' do
     @user = User.find(id: session[:user_id])
