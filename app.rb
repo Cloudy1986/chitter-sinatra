@@ -72,6 +72,7 @@ class ChitterApplication < Sinatra::Base
 
   delete '/peeps/:id' do
     p params
+    Peep.delete(id: params['id'])
     redirect '/peeps'
   end
 
