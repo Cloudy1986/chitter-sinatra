@@ -15,6 +15,12 @@ class ChitterApplication < Sinatra::Base
   enable :sessions
   register Sinatra::Flash
 
+  def logged_in
+    if !session[:user_id]
+      redirect '/'
+    end
+  end
+
   get '/' do
     erb :homepage
   end
@@ -26,6 +32,7 @@ class ChitterApplication < Sinatra::Base
   end
 
   get '/peeps/new' do
+    logged_in
     @user = User.find(id: session[:user_id])
     erb :'peeps/new'
   end
