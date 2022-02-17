@@ -80,5 +80,10 @@ class ChitterApplication < Sinatra::Base
     erb :'peeps/edit'
   end
 
+  patch '/peeps/:id' do
+    Peep.update(id: params['id'], message: params['message'])
+    redirect '/peeps'
+  end
+
   run! if app_file == $0
 end

@@ -73,4 +73,19 @@ describe Peep do
       expect(returned_peep.user_id).to eq peep.user_id
     end
   end
+
+  describe '.update' do
+    it 'updates a peep in the database' do
+      # Arrange
+      user = User.create(username: 'Mary', email: 'mary@example.com', password: 'fdbguib')
+      peep = Peep.create(message: 'This is a test peep', user_id: user.id)
+      
+      updated_peep = Peep.update(id: peep.id, message: 'This is an updated peep')
+      
+      expect(updated_peep).to be_a Peep
+      expect(updated_peep.id).to eq peep.id
+      expect(updated_peep.user_id).to eq peep.user_id
+      expect(updated_peep.message).to eq 'This is an updated peep'
+    end
+  end
 end
