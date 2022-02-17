@@ -28,6 +28,7 @@ class ChitterApplication < Sinatra::Base
   end
 
   get '/' do
+    @user = User.find(id: session[:user_id])
     erb :homepage
   end
 
