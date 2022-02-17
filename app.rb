@@ -13,7 +13,7 @@ class ChitterApplication < Sinatra::Base
     register Sinatra::Reloader
   end
 
-  enable :sessions
+  enable :sessions, :method_override
   register Sinatra::Flash
 
   get '/' do
@@ -68,6 +68,12 @@ class ChitterApplication < Sinatra::Base
   post '/log-in/destroy' do
     session.clear
     redirect 'log-in'
+  end
+
+  delete '/peeps/:id' do
+    p params
+    Peep.delete(id: params['id'])
+    redirect '/peeps'
   end
 
   run! if app_file == $0

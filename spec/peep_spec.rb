@@ -45,4 +45,18 @@ describe Peep do
       peep.owner(user_class)
     end
   end
+
+  describe '.delete' do
+    it 'deletes a peep from the database by an id' do
+      user = User.create(username: 'Mary', email: 'mary@example.com', password: 'fdbguib')
+      peep = Peep.create(message: 'This is a test peep', user_id: user.id)
+
+      deleted_peep = Peep.delete(id: peep.id)
+      peeps = Peep.all
+
+      expect(peeps).to be_empty
+      expect(deleted_peep.id).to eq peep.id
+      expect(deleted_peep.user_id).to eq user.id
+    end
+  end
 end
