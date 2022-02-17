@@ -15,13 +15,13 @@ class ChitterApplication < Sinatra::Base
   enable :sessions
   register Sinatra::Flash
 
-  def logged_out_user
+  def redirect_logged_out_user
     if !session[:user_id]
       redirect '/'
     end
   end
 
-  def logged_in_user
+  def redirect_logged_in_user
     if session[:user_id]
       redirect '/peeps'
     end
@@ -39,7 +39,7 @@ class ChitterApplication < Sinatra::Base
   end
 
   get '/peeps/new' do
-    logged_out_user
+    redirect_logged_out_user
     @user = User.find(id: session[:user_id])
     erb :'peeps/new'
   end
@@ -50,7 +50,7 @@ class ChitterApplication < Sinatra::Base
   end
 
   get '/sign-up' do
-    logged_in_user
+    redirect_logged_in_user
     erb :'users/sign_up'
   end
 
@@ -61,7 +61,7 @@ class ChitterApplication < Sinatra::Base
   end
 
   get '/log-in' do
-    logged_in_user
+    redirect_logged_in_user
     erb :'users/log_in'
   end
 
