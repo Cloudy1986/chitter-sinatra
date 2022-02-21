@@ -25,14 +25,18 @@
               <form action="/peeps/<%= peep.id %>/edit" method="get">
                 <input class="btn btn-dark" type="submit" value="Edit peep">
               </form>
-              <% end %>
               <br>
+              <% end %>
               <% if @user && @user.id == peep.user_id %>
               <form action="/peeps/<%= peep.id %>" method="post">
                 <input type="hidden" name="_method" value="DELETE">
                 <input class="btn btn-dark" type="submit" value="Delete peep">
               </form>
+              <br>
               <% end %>
+              <form action="/peeps/<%= peep.id %>/comments/new" method="get">
+                <input class="btn btn-dark" type="submit" value="Comment">
+              </form>
               <br>
             </div>
           </div>

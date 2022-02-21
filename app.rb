@@ -87,5 +87,10 @@ class ChitterApplication < Sinatra::Base
     redirect '/peeps'
   end
 
+  get '/peeps/:id/comments/new' do
+    @peep = Peep.find(id: params['id'])
+    erb :'comments/new'
+  end
+
   run! if app_file == $0
 end
