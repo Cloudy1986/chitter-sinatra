@@ -46,7 +46,7 @@
               <br>
               <h5 class="card-title"><%= comment.text %></h5>
               <br>
-              <h6 class="card-subtitle mb-2 text-muted">Created by ???? at <%= Time.parse("#{comment.created_at}").strftime("%H:%M %d/%m/%Y") %></h6>
+              <h6 class="card-subtitle mb-2 text-muted">Created by <%= comment.owner.username %> at <%= Time.parse("#{comment.created_at}").strftime("%H:%M %d/%m/%Y") %></h6>
               <br>
             </div>
           </div>

@@ -34,4 +34,8 @@ class Comment
     end
   end
 
+  def owner(user_class = User)
+    user_class.find(id: user_id)
+  end
+
 end

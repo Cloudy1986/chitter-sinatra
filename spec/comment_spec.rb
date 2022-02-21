@@ -1,6 +1,8 @@
 require 'comment'
 
 describe Comment do
+
+  let(:user_class) { double(:user_class) }
   
   describe '.create' do
     it 'adds a comment to the database' do
@@ -34,6 +36,17 @@ describe Comment do
       expect(comments[1].id).to eq comment_2.id
       expect(comments[0].peep_id).to eq comment_1.peep_id
       expect(comments[1].user_id).to eq comment_2.user_id
+    end
+  end
+
+  describe '#owner' do
+    it 'calls .find on the User class' do
+      user = User.create(username: 'Mary', email: 'mary@example.com', password: 'fdbguib')
+      peep = Peep.create(message: 'This is a peep', user_id: user.id)
+      comment = Comment.create(text: 'This is a comment', peep_id: peep.id, user_id: user.id)
+
+      expect(user_class).to receive(:find).with(id: comment.user_id)
+      comment.owner(user_class)
     end
   end
 
