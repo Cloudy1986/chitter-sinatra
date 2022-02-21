@@ -67,7 +67,7 @@ I want... to update my own peep
 So that... I can update a peep if I've made a typo
 ```
 
-**[Comment on a peep](https://trello.com/c/6ZMVDqnR):**
+**[Comment on a peep](https://trello.com/c/6ZMVDqnR):** ✅
 ```
 As a... user
 I want... to comment on a peep
