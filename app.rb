@@ -92,5 +92,14 @@ class ChitterApplication < Sinatra::Base
     erb :'comments/new'
   end
 
+  post '/peeps/:id/comments/new' do
+    p params
+    redirect "/peeps/#{params['id']}/comments"
+  end
+
+  get '/peeps/:id/comments' do
+    erb :'comments/index'
+  end
+
   run! if app_file == $0
 end
