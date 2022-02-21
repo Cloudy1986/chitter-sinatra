@@ -67,7 +67,7 @@ I want... to update my own peep
 So that... I can update a peep if I've made a typo
 ```
 
-**Comment on a peep:**
+**[Comment on a peep](https://trello.com/c/6ZMVDqnR):**
 ```
 As a... user
 I want... to comment on a peep
@@ -88,6 +88,9 @@ https://trello.com/b/RnC9pnmw/chitter-sinatra
     * Run the query saved in `01_create_peeps_table.sql`
     * Run the query saved in `02_create_users_table.sql`
     * Run the query saved in `03_add_column_peeps_table.sql`
+    * Run the query saved in `04_create_comments_table.sql`
+    * Run the query saved in `05_add_column_comments_table.sql`
+    * Run the query saved in `06_add_column_comments_table.sql`
 4. Set up your test database:
     * Open postrges by entering `psql` in the terminal
     * Run the command `CREATE DATABASE chitter_sinatra_test;` to create the database
@@ -95,5 +98,8 @@ https://trello.com/b/RnC9pnmw/chitter-sinatra
     * Run the query saved in `01_create_peeps_table.sql`
     * Run the query saved in `02_create_users_table.sql`
     * Run the query saved in `03_add_column_peeps_table.sql`
+    * Run the query saved in `04_create_comments_table.sql`
+    * Run the query saved in `05_add_column_comments_table.sql`
+    * Run the query saved in `06_add_column_comments_table.sql`
 5. Start the server using `rackup` in the terminal
 6. Visit your local host and start playing with the app!

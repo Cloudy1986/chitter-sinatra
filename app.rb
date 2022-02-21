@@ -5,6 +5,7 @@ require 'sinatra/reloader'
 require 'sinatra/flash'
 require './lib/peep'
 require './lib/user'
+require './lib/comment'
 require './redirect_helper'
 
 # class for controller
@@ -15,7 +16,7 @@ class ChitterApplication < Sinatra::Base
   end
 
   enable :sessions, :method_override
-  
+
   get '/' do
     @user = User.find(id: session[:user_id])
     erb :homepage
@@ -85,6 +86,25 @@ class ChitterApplication < Sinatra::Base
   patch '/peeps/:id' do
     Peep.update(id: params['id'], message: params['message'])
     redirect '/peeps'
+  end
+
+  get '/peeps/:id/comments/new' do
+    redirect_logged_out_user
+    @user = User.find(id: session[:user_id])
+    @peep = Peep.find(id: params['id'])
+    erb :'comments/new'
+  end
+
+  post '/peeps/:id/comments/new' do
+    Comment.create(text: params['comment_text'], peep_id: params['id'], user_id: session[:user_id])
+    redirect "/peeps/#{params['id']}/comments"
+  end
+
+  get '/peeps/:id/comments' do
+    @user = User.find(id: session[:user_id])
+    @peep = Peep.find(id: params['id'])
+    @comments = Comment.find(peep_id: params['id'])
+    erb :'comments/index'
   end
 
   run! if app_file == $0

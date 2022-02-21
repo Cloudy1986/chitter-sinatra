@@ -1,0 +1,1 @@
+ALTER TABLE comments ADD COLUMN peep_id INTEGER REFERENCES peeps (id);

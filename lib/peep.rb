@@ -68,5 +68,4 @@ class Peep
     result = connection.exec_params('UPDATE peeps SET message = $1 WHERE id = $2 RETURNING id, message, created_at, user_id;', [message, id])
     Peep.new(id: result[0]['id'], message: result[0]['message'], created_at: result[0]['created_at'], user_id: result[0]['user_id'])
   end
-
 end
