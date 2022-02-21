@@ -100,9 +100,9 @@ class ChitterApplication < Sinatra::Base
   end
 
   get '/peeps/:id/comments' do
-    p params
-    # Find the comments for peep by peep_id
-    # Comment.find(peep_id: params['id'])
+    @user = User.find(id: session[:user_id])
+    @peep = Peep.find(id: params['id'])
+    @comments = Comment.find(peep_id: params['id'])
     erb :'comments/index'
   end
 
