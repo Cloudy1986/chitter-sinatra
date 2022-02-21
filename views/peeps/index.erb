@@ -38,10 +38,12 @@
                 <input class="btn btn-dark" type="submit" value="View comments">
               </form>
               <br>
+              <% if @user %>
               <form action="/peeps/<%= peep.id %>/comments/new" method="get">
-                <input class="btn btn-dark" type="submit" value="Comment">
+                <input class="btn btn-dark" type="submit" value="Add comment">
               </form>
               <br>
+              <% end %>
             </div>
           </div>
         <% end %>
