@@ -16,7 +16,7 @@ class ChitterApplication < Sinatra::Base
   end
 
   enable :sessions, :method_override
-  
+
   get '/' do
     @user = User.find(id: session[:user_id])
     erb :homepage

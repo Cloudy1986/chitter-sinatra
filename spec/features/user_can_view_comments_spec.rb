@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'View comments' do
   scenario 'user can view comments for a peep, when they were created and who created each peep' do
     user = User.create(username: 'Bob', email: 'bob@example.com', password: 'password1234')

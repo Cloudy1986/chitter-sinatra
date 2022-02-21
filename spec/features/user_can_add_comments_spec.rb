@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'Add comment' do
   scenario 'user can add a comment to a peep' do
     user = User.create(username: 'Bob', email: 'bob@example.com', password: 'password1234')
