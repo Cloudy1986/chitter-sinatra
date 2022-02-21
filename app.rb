@@ -5,6 +5,7 @@ require 'sinatra/reloader'
 require 'sinatra/flash'
 require './lib/peep'
 require './lib/user'
+require './lib/comment'
 require './redirect_helper'
 
 # class for controller
@@ -94,9 +95,7 @@ class ChitterApplication < Sinatra::Base
   end
 
   post '/peeps/:id/comments/new' do
-    p params
-    # Add the comment to the database (belonging to a user and a peep)
-    # Comment.create(text: params['comment_text'], peep_id: params['id'], user_id: session[:user_id])
+    Comment.create(text: params['comment_text'], peep_id: params['id'], user_id: session[:user_id])
     redirect "/peeps/#{params['id']}/comments"
   end
 
