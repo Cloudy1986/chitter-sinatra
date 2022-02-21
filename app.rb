@@ -88,16 +88,22 @@ class ChitterApplication < Sinatra::Base
   end
 
   get '/peeps/:id/comments/new' do
+    @user = User.find(id: session[:user_id])
     @peep = Peep.find(id: params['id'])
     erb :'comments/new'
   end
 
   post '/peeps/:id/comments/new' do
     p params
+    # Add the comment to the database (belonging to a user and a peep)
+    # Comment.create(text: params['comment_text'], peep_id: params['id'], user_id: session[:user_id])
     redirect "/peeps/#{params['id']}/comments"
   end
 
   get '/peeps/:id/comments' do
+    p params
+    # Find the comments for peep by peep_id
+    # Comment.find(peep_id: params['id'])
     erb :'comments/index'
   end
 
