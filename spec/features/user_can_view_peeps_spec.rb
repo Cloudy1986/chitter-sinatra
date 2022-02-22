@@ -31,4 +31,14 @@ feature 'View peeps' do
     expect(page).to have_content "Created by #{user.username}"
     expect(page).to have_content "Created by #{user2.username}"
   end
+
+  scenario 'display message when no peeps have been created yet' do
+    User.create(username: 'Bob', email: 'bob@example.com', password: 'password1234')
+    visit '/log-in'
+    fill_in 'email', with: 'bob@example.com'
+    fill_in 'password', with: 'password1234'
+    click_button 'Log in'
+    expect(current_path).to eq '/peeps'
+    expect(page).to have_content 'No peeps added yet'
+  end
 end
