@@ -5,17 +5,17 @@
   </head>
   <body>
     <br>
-    <div class="container-fluid">
+    <div class="container">
       <div class="row justify-content-center">
         <h1 class="text-center">Edit peep</h1>
       </div>
     </div>
     <br>
-    <div class="container-fluid">
+    <div class="container">
       <div class="row justify-content-center">
         <form class="text-center" action="/peeps/<%= @peep.id %>" method="post">
           <input type="hidden" name="_method" value="patch">
-          <input class="form-control" type="text" name="message" placeholder="<%= @peep.message %>">
+          <input class="form-control" type="text" name="message" placeholder="<%= @peep.message %>" required >
           <br>
           <input class="btn btn-dark" type="submit" value="Update peep">
         </form>
