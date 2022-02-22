@@ -38,21 +38,21 @@
       </div>
     </div>
     <br>
+    <% @comments.each do |comment| %>
     <div class="container">
       <div class="row justify-content-center">
-        <% @comments.each do |comment| %>
-          <div class="card" style="width: 40rem;">
-            <div class="card-body text-center">
-              <br>
-              <h5 class="card-title"><%= comment.text %></h5>
-              <br>
-              <h6 class="card-subtitle mb-2 text-muted">Created by <%= comment.owner.username %> at <%= Time.parse("#{comment.created_at}").strftime("%H:%M %d/%m/%Y") %></h6>
-              <br>
-            </div>
+        <div class="card" style="width: 40rem;">
+          <div class="card-body text-center">
+            <br>
+            <h5 class="card-title"><%= comment.text %></h5>
+            <br>
+            <h6 class="card-subtitle mb-2 text-muted">Created by <%= comment.owner.username %> at <%= Time.parse("#{comment.created_at}").strftime("%H:%M %d/%m/%Y") %></h6>
+            <br>
           </div>
-        <% end %>
+        </div>
       </div>
     </div>
+    <% end %>
     <br>
   </body>
 </html>
