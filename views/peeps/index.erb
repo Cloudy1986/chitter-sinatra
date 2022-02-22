@@ -11,44 +11,44 @@
       </div>
     </div>
     <br>
+    <% @peeps.each do |peep|%>
     <div class="container">
       <div class="row justify-content-center">
-        <% @peeps.each do |peep|%>
-          <div class="card" style="width: 40rem;">
-            <div class="card-body text-center">
-              <br>
-              <h5 class="card-title"><%= peep.message %></h5>
-              <br>
-              <h6 class="card-subtitle mb-2 text-muted">Created by <%= peep.owner.username %> at <%= Time.parse("#{peep.created_at}").strftime("%H:%M %d/%m/%Y") %></h6>
-              <br>
-              <% if @user && @user.id == peep.user_id %>
-              <form action="/peeps/<%= peep.id %>/edit" method="get">
-                <input class="btn btn-dark" type="submit" value="Edit peep">
-              </form>
-              <br>
-              <% end %>
-              <% if @user && @user.id == peep.user_id %>
-              <form action="/peeps/<%= peep.id %>" method="post">
-                <input type="hidden" name="_method" value="DELETE">
-                <input class="btn btn-dark" type="submit" value="Delete peep">
-              </form>
-              <br>
-              <% end %>
-              <form action="/peeps/<%= peep.id %>/comments" method="get">
-                <input class="btn btn-dark" type="submit" value="View comments">
-              </form>
-              <br>
-              <% if @user %>
-              <form action="/peeps/<%= peep.id %>/comments/new" method="get">
-                <input class="btn btn-dark" type="submit" value="Add comment">
-              </form>
-              <br>
-              <% end %>
-            </div>
+        <div class="card" style="width: 40rem;">
+          <div class="card-body text-center">
+          <br>
+            <h5 class="card-title"><%= peep.message %></h5>
+            <br>
+            <h6 class="card-subtitle mb-2 text-muted">Created by <%= peep.owner.username %> at <%= Time.parse("#{peep.created_at}").strftime("%H:%M %d/%m/%Y") %></h6>
+            <br>
+            <% if @user && @user.id == peep.user_id %>
+            <form action="/peeps/<%= peep.id %>/edit" method="get">
+              <input class="btn btn-dark" type="submit" value="Edit peep">
+            </form>
+            <br>
+            <% end %>
+            <% if @user && @user.id == peep.user_id %>
+            <form action="/peeps/<%= peep.id %>" method="post">
+              <input type="hidden" name="_method" value="DELETE">
+              <input class="btn btn-dark" type="submit" value="Delete peep">
+            </form>
+            <br>
+            <% end %>
+            <form action="/peeps/<%= peep.id %>/comments" method="get">
+              <input class="btn btn-dark" type="submit" value="View comments">
+            </form>
+            <br>
+            <% if @user %>
+            <form action="/peeps/<%= peep.id %>/comments/new" method="get">
+              <input class="btn btn-dark" type="submit" value="Add comment">
+            </form>
+            <br>
+            <% end %>
           </div>
-        <% end %>
+        </div>
       </div>
     </div>
+    <% end %>
     <br>
   </body>
 </html>
