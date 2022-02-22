@@ -103,3 +103,7 @@ https://trello.com/b/RnC9pnmw/chitter-sinatra
     * Run the query saved in `06_add_column_comments_table.sql`
 5. Start the server using `rackup` in the terminal
 6. Visit your local host and start playing with the app!
+
+## Running the tests
+
+From the top level directory of your cloned repo, run `rspec` from the command line.
