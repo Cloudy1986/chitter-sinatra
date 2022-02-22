@@ -74,8 +74,9 @@ I want... to comment on a peep
 So that... I can interact with others users via their peeps
 ```
 
-## Trello board
-https://trello.com/b/RnC9pnmw/chitter-sinatra
+## Tracking development of the app
+
+I used a trello board to track my progress with building the features for the user stories above. It's a public board if you want to take a look - https://trello.com/b/RnC9pnmw/chitter-sinatra. I also worked on each feature in a branch before merging the branch into main via a pull request. This was in order to replicate working in a development team and keep up the good development practices I've developed at Makers Academy.
 
 ## Setting up and running the app
 
