@@ -17,11 +17,13 @@ class ChitterApplication < Sinatra::Base
 
   enable :sessions, :method_override
 
+  # Route for homepage
   get '/' do
     @user = User.find(id: session[:user_id])
     erb :homepage
   end
 
+  # Routes for viewing, adding, deleting & editing peeps
   get '/peeps' do
     @user = User.find(id: session[:user_id])
     @peeps = Peep.all.sort_by(&:created_at).reverse
@@ -37,38 +39,6 @@ class ChitterApplication < Sinatra::Base
   post '/peeps/new' do
     Peep.create(message: params['message'], user_id: session[:user_id])
     redirect '/peeps'
-  end
-
-  get '/sign-up' do
-    redirect_logged_in_user
-    erb :'users/sign_up'
-  end
-
-  post '/sign-up/new' do
-    user = User.create(username: params['username'], email: params['email'], password: params['password'])
-    session[:user_id] = user.id
-    redirect '/peeps'
-  end
-
-  get '/log-in' do
-    redirect_logged_in_user
-    erb :'users/log_in'
-  end
-
-  post '/log-in/new' do
-    user = User.authenticate(email: params['email'], password: params['password'])
-    if user
-      session[:user_id] = user.id
-      redirect '/peeps'
-    else
-      flash[:notice] = 'Please check your email or password and try again'
-      redirect 'log-in'
-    end
-  end
-
-  post '/log-in/destroy' do
-    session.clear
-    redirect 'log-in'
   end
 
   delete '/peeps/:id' do
@@ -88,6 +58,14 @@ class ChitterApplication < Sinatra::Base
     redirect '/peeps'
   end
 
+  # Routes for viewing & adding comments
+  get '/peeps/:id/comments' do
+    @user = User.find(id: session[:user_id])
+    @peep = Peep.find(id: params['id'])
+    @comments = Comment.find(peep_id: params['id'])
+    erb :'comments/index'
+  end
+
   get '/peeps/:id/comments/new' do
     redirect_logged_out_user
     @user = User.find(id: session[:user_id])
@@ -100,11 +78,54 @@ class ChitterApplication < Sinatra::Base
     redirect "/peeps/#{params['id']}/comments"
   end
 
-  get '/peeps/:id/comments' do
-    @user = User.find(id: session[:user_id])
-    @peep = Peep.find(id: params['id'])
-    @comments = Comment.find(peep_id: params['id'])
-    erb :'comments/index'
+  # Routes for signing up
+  get '/sign-up' do
+    redirect_logged_in_user
+    erb :'users/sign_up'
+  end
+
+  post '/sign-up/new' do
+    user = User.create(username: params['username'], email: params['email'], password: params['password'])
+    session[:user_id] = user.id
+    redirect '/peeps'
+  end
+
+  # Routes for logging in
+  get '/log-in' do
+    redirect_logged_in_user
+    erb :'users/log_in'
+  end
+
+  post '/log-in/new' do
+    user = User.authenticate(email: params['email'], password: params['password'])
+    if user
+      session[:user_id] = user.id
+      redirect '/peeps'
+    else
+      flash[:notice] = 'Please check your email or password and try again'
+      redirect 'log-in'
+    end
+  end
+
+  # Routes for logging out
+  post '/log-in/destroy' do
+    session.clear
+    redirect 'log-in'
+  end
+
+  post '/peeps/log-in/destroy' do
+    session.clear
+    redirect 'log-in'
+  end
+
+  post '/peeps/:id/log-in/destroy' do
+    session.clear
+    redirect 'log-in'
+  end
+
+  post '/peeps/:id/comments/log-in/destroy' do
+    session.clear
+    redirect 'log-in'
   end
 
   run! if app_file == $0
