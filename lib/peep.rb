@@ -23,7 +23,12 @@ class Peep
 
   def self.create(message:, user_id:)
     result = database_connection.exec_params('INSERT INTO peeps (message, user_id) VALUES ($1, $2) RETURNING id, message, created_at, user_id;', [message, user_id])
-    Peep.new(id: result[0]['id'], message: result[0]['message'], created_at: result[0]['created_at'], user_id: result[0]['user_id'])
+    Peep.new(
+      id: result[0]['id'],
+      message: result[0]['message'],
+      created_at: result[0]['created_at'],
+      user_id: result[0]['user_id']
+    )
   end
 
   def owner(user_class = User)
@@ -32,16 +37,31 @@ class Peep
 
   def self.delete(id:)
     result = database_connection.exec_params('DELETE FROM peeps WHERE id = $1 RETURNING id, message, created_at, user_id;', [id])
-    Peep.new(id: result[0]['id'], message: result[0]['message'], created_at: result[0]['created_at'], user_id: result[0]['user_id'])
+    Peep.new(
+      id: result[0]['id'],
+      message: result[0]['message'],
+      created_at: result[0]['created_at'],
+      user_id: result[0]['user_id']
+    )
   end
 
   def self.find(id:)
     result = database_connection.exec_params('SELECT * FROM peeps WHERE id = $1;', [id])
-    Peep.new(id: result[0]['id'], message: result[0]['message'], created_at: result[0]['created_at'], user_id: result[0]['user_id'])
+    Peep.new(
+      id: result[0]['id'],
+      message: result[0]['message'],
+      created_at: result[0]['created_at'],
+      user_id: result[0]['user_id']
+    )
   end
 
   def self.update(id:, message:)
     result = database_connection.exec_params('UPDATE peeps SET message = $1 WHERE id = $2 RETURNING id, message, created_at, user_id;', [message, id])
-    Peep.new(id: result[0]['id'], message: result[0]['message'], created_at: result[0]['created_at'], user_id: result[0]['user_id'])
+    Peep.new(
+      id: result[0]['id'],
+      message: result[0]['message'],
+      created_at: result[0]['created_at'],
+      user_id: result[0]['user_id']
+    )
   end
 end
