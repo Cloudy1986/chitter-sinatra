@@ -105,6 +105,9 @@ I used a trello board to track my progress with building the features for the us
 5. Start the server using `rackup` in the terminal
 6. Visit your local host and start playing with the app!
 
-## Running the tests
+## Test coverage and running the tests
 
-From the top level directory of your cloned repo, run `rspec` from the command line.
+- 41 unit and feature tests
+- 99.81% test coverage
+- 533 out 534 lines in 19 files covered
+- To run the tests, navigate to the top level directory of your cloned repo and run `rspec` from the command line.
