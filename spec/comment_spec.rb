@@ -9,7 +9,6 @@ describe Comment do
     it 'adds a comment to the database' do
       user = User.create(username: 'Bob', email: 'bob@example.com', password: 'password1234')
       peep = Peep.create(message: 'Test peep 2', user_id: user.id)
-
       comment = Comment.create(text: 'This is a comment', peep_id: peep.id, user_id: user.id)
 
       test_connection = PG.connect(dbname: 'chitter_sinatra_test')
@@ -45,7 +44,7 @@ describe Comment do
       user = User.create(username: 'Mary', email: 'mary@example.com', password: 'fdbguib')
       peep = Peep.create(message: 'This is a peep', user_id: user.id)
       comment = Comment.create(text: 'This is a comment', peep_id: peep.id, user_id: user.id)
-
+      
       expect(user_class).to receive(:find).with(id: comment.user_id)
       comment.owner(user_class)
     end

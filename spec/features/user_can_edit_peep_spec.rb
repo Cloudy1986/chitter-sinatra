@@ -15,14 +15,14 @@ feature 'Edit peep' do
     expect(page).to have_content 'This peep has been edited'
   end
 
-  scenario 'logged out user cannot see edit peeps buttons' do
+  scenario 'logged out user cannot see edit peep buttons' do
     user = User.create(username: 'Mary', email: 'mary@example.com', password: '1234password')
     Peep.create(message: 'This is a test peep', user_id: user.id)
     visit '/peeps'
     expect(page).to_not have_button 'Edit peep'
   end
 
-  scenario 'logged out user cannot is redirect to the homepage' do
+  scenario 'logged out user cannot edit a peep and is redirected to the homepage' do
     user = User.create(username: 'Mary', email: 'mary@example.com', password: '1234password')
     peep = Peep.create(message: 'This is a test peep', user_id: user.id)
     visit "/peeps/#{peep.id}/edit"
