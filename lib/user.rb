@@ -2,7 +2,7 @@
 
 require 'pg'
 require 'bcrypt'
-require 'database_connection_helper'
+require './lib/database_connection_helper'
 
 # This class is responsible for users
 class User

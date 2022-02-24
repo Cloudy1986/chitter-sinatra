@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'pg'
-require 'database_connection_helper'
+require './lib/database_connection_helper'
 
 # This class is responsible for comments
 class Comment
